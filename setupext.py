@@ -5,7 +5,6 @@ from distutils import version
 from distutils.core import Extension
 import glob
 import io
-import multiprocessing
 import os
 import re
 import subprocess
@@ -1488,6 +1487,7 @@ class BackendGtk3Agg(OptionalBackendPackage):
         # importing gi and then importing regular old pygtk afterward
         # segfaults the interpreter.
         try:
+            import multiprocessing
             p = multiprocessing.Pool()
         except:
             return "unknown (can not use multiprocessing to determine)"
@@ -1562,6 +1562,7 @@ class BackendGtk3Cairo(OptionalBackendPackage):
         # importing gi and then importing regular old pygtk afterward
         # segfaults the interpreter.
         try:
+            import multiprocessing
             p = multiprocessing.Pool()
         except:
             return "unknown (can not use multiprocessing to determine)"
@@ -1694,6 +1695,7 @@ class BackendQtBase(OptionalBackendPackage):
         so we need to test in a subprocess (as for Gtk3).
         '''
         try:
+            import multiprocessing
             p = multiprocessing.Pool()
 
         except:
